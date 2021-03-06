@@ -9,3 +9,17 @@ Includes
 2. Update DLB
 3. Get DLB List
 4. Delete DLB
+
+## VPC
+1. Create VPC
+2. Get VPC
+
+## Users
+1. Get Org Members
+2. Send User Invite
+3. Get Roles
+
+## Authentication
+1. Delete auth token
+2. Create connected apps auth token
+3. Create access token from username & password
