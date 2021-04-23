@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ee765341-b7e0-435b-8ce2-f05518421445",
+		"_postman_id": "3e45967c-f0e0-408c-98c2-9f0f6d21542d",
 		"name": "Cloudhub-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -230,7 +230,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"myProductionVpc\",\n  \"region\": \"us-east-1\",\n  \"cidrBlock\": \"192.168.1.0/24\",\n  \"internalDns\": {\n    \"dnsServers\": [\"8.8.8.8\",\"8.8.8.4\"],\n    \"specialDomains\": [\"mydomain.local\",\"mydomain.localdomain\"]\n  },\n  \"isDefault\": false,\n  \"associatedEnvironments\": [\"eeeeb145-6f79-402d-85fc-8c90905d2490\"],\n  \"sharedWith\": [\"0000000-1111-2222-3333-44444444444\"],\n  \"firewallRules\": [\n    {\n      \"cidrBlock\": \"0.0.0.0/0\",\n      \"protocol\": \"tcp\",\n      \"fromPort\": 8081,\n      \"toPort\": 8082\n    },\n    {\n      \"cidrBlock\": \"192.168.1.0/24\",\n      \"protocol\": \"tcp\",\n      \"fromPort\": 8091,\n      \"toPort\": 8092\n    }\n  ]\n}",
+							"raw": "{\n  \"name\": \"myTestVPC\",\n  \"region\": \"us-east-1\",\n  \"cidrBlock\": \"192.168.1.0/24\",\n  \"internalDns\": {\n    \"dnsServers\": [\"8.8.8.8\",\"8.8.8.4\"],\n    \"specialDomains\": []\n  },\n  \"isDefault\": false,\n  \"associatedEnvironments\": [],\n  \"sharedWith\": [],\n  \"firewallRules\": [\n    {\n      \"cidrBlock\": \"0.0.0.0/0\",\n      \"protocol\": \"tcp\",\n      \"fromPort\": 8081,\n      \"toPort\": 8082\n    },\n    {\n      \"cidrBlock\": \"192.168.1.0/24\",\n      \"protocol\": \"tcp\",\n      \"fromPort\": 8091,\n      \"toPort\": 8092\n    }\n  ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -289,25 +289,15 @@
 							"variable": [
 								{
 									"key": "orgId",
-									"value": "{{cloudhub-org}}",
-									"type": "text",
-									"enabled": true
+									"value": "{{cloudhub-org}}"
 								}
 							]
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "OTHER",
-			"item": [
+				},
 				{
-					"name": "get org members",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {}
-					},
+					"name": "get vpc by id",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -322,27 +312,130 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/members",
+							"raw": "{{cloudhub-host}}/cloudhub/api/organizations/:orgId/vpcs/:vpcId",
 							"host": [
 								"{{cloudhub-host}}"
 							],
 							"path": [
-								"accounts",
+								"cloudhub",
 								"api",
 								"organizations",
 								":orgId",
-								"members"
+								"vpcs",
+								":vpcId"
 							],
 							"variable": [
 								{
 									"key": "orgId",
 									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "vpcId",
+									"value": "vpc-0aea9f31a049ce288"
 								}
 							]
 						}
 					},
 					"response": []
 				},
+				{
+					"name": "update vpc by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"myTestVPC\",\n  \"region\": \"us-east-1\",\n  \"cidrBlock\": \"192.168.1.0/24\",\n  \"internalDns\": {\n    \"dnsServers\": [],\n    \"specialDomains\": []\n  },\n  \"isDefault\": false,\n  \"associatedEnvironments\": [],\n  \"sharedWith\": [],\n  \"firewallRules\": [\n    {\n      \"cidrBlock\": \"0.0.0.0/0\",\n      \"protocol\": \"tcp\",\n      \"fromPort\": 8081,\n      \"toPort\": 8082\n    },\n    {\n      \"cidrBlock\": \"192.168.1.0/24\",\n      \"protocol\": \"tcp\",\n      \"fromPort\": 8091,\n      \"toPort\": 8092\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/cloudhub/api/organizations/:orgId/vpcs/:vpcId",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"cloudhub",
+								"api",
+								"organizations",
+								":orgId",
+								"vpcs",
+								":vpcId"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "vpcId",
+									"value": "vpc-0b416d8a1ace2a92f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete vpc by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/cloudhub/api/organizations/:orgId/vpcs/:vpcId",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"cloudhub",
+								"api",
+								"organizations",
+								":orgId",
+								"vpcs",
+								":vpcId"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "vpcId",
+									"value": "vpc-001ddb90e087df74b"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OTHER",
+			"item": [
 				{
 					"name": "post invite",
 					"request": {
@@ -520,6 +613,9 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"XSRF-TOKEN\"); ",
+									"postman.setEnvironmentVariable('csrftoken', xsrfCookie.value);",
+									"",
 									"pm.test(\"Status code is 200\", () => {",
 									"  pm.expect(pm.response.code).to.eql(200);",
 									"});",
@@ -538,16 +634,9 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "client_id",
-								"value": "b21f29b169f94018ac319c0f5fcd0e65",
-								"type": "text",
-								"disabled": true
-							},
-							{
-								"key": "client_secret",
-								"value": "4aA6d9F516A945398c6f45B4a76cD39a",
-								"type": "text",
-								"disabled": true
+								"key": "XSRF-TOKEN",
+								"value": "{{csrftoken}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -567,6 +656,293 @@
 							"path": [
 								"accounts",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh csrf Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var xsrfCookie = postman.getResponseCookie(\"XSRF-TOKEN\"); ",
+									"postman.setEnvironmentVariable('csrftoken', xsrfCookie.value);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}",
+							"host": [
+								"{{cloudhub-host}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Org",
+			"item": [
+				{
+					"name": "Org",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Example\",\n    \"parentOrganizationId\": \"{{cloudhub-org}}\",\n    \"ownerId\": \"18f23771-c78a-4be2-af8f-1bae66f43942\",\n    \"entitlements\": {\n        \"createSubOrgs\": true,\n        \"createEnvironments\": true,\n        \"globalDeployment\": false,\n        \"vCoresProduction\": {\n            \"assigned\": 0.2\n        },\n        \"vCoresSandbox\": {\n            \"assigned\": 0.2\n        },\n        \"vCoresDesign\": {\n            \"assigned\": 0.1\n        },\n        \"staticIps\": {\n            \"assigned\": 1\n        },\n        \"vpcs\": {\n            \"assigned\": 0\n        },\n        \"loadBalancer\": {\n            \"assigned\": 0\n        },\n        \"vpns\": {\n            \"assigned\": 0\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Org",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Example\",\n    \"parentOrganizationId\": \"{{cloudhub-org-cat}}\",\n    \"ownerId\": \"18f23771-c78a-4be2-af8f-1bae66f43942\",\n    \"entitlements\": {\n        \"createSubOrgs\": true,\n        \"createEnvironments\": true,\n        \"globalDeployment\": false,\n        \"vCoresProduction\": {\n            \"assigned\": 0.2\n        },\n        \"vCoresSandbox\": {\n            \"assigned\": 0.2\n        },\n        \"vCoresDesign\": {\n            \"assigned\": 0.1\n        },\n        \"staticIps\": {\n            \"assigned\": 1\n        },\n        \"vpcs\": {\n            \"assigned\": 0\n        },\n        \"loadBalancer\": {\n            \"assigned\": 0\n        },\n        \"vpns\": {\n            \"assigned\": 0\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Org",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgid",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgid"
+							],
+							"variable": [
+								{
+									"key": "orgid",
+									"value": "584f8da4-0a93-44ac-ab26-ff2e5b6f57b9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Org By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgid",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgid"
+							],
+							"variable": [
+								{
+									"key": "orgid",
+									"value": "584f8da4-0a93-44ac-ab26-ff2e5b6f57b9"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Org members",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/members",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"members"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "authorize",
+			"item": [
+				{
+					"name": "authorize",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "client_id",
+								"value": "b21f29b169f94018ac319c0f5fcd0e65",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "client_secret",
+								"value": "4aA6d9F516A945398c6f45B4a76cD39a",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action\": \"POST\",\n    \"namespace\": \"cs_auth\",\n    \"resources\": [\n        \"/organizations/{{cloudhub-org}}/domainClients\",\n        \"/organizations/{{cloudhub-org}}/domainClients/*\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/authorize",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"authorize"
 							]
 						}
 					},
