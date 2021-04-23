@@ -23,3 +23,8 @@ Includes
 1. Delete auth token
 2. Create connected apps auth token
 3. Create access token from username & password
+
+## Organization
+1. Create Business Group
+2. Get Business Group by ID
+3. Update Business Group
