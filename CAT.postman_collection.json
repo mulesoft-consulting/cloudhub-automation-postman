@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a4eda7bc-6ffe-4050-a11d-021d435abf1a",
+		"_postman_id": "f92e21a0-60d9-493b-8804-48d1eebbfa03",
 		"name": "CAT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1185,6 +1185,437 @@
 								"accounts",
 								"api",
 								"authorize"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "role",
+			"item": [
+				{
+					"name": "roles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/roles",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rolegroups roles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:org-id/rolegroups/:rolegroup-id/roles",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":org-id",
+								"rolegroups",
+								":rolegroup-id",
+								"roles"
+							],
+							"query": [
+								{
+									"disabled": true,
+									"value": null
+								}
+							],
+							"variable": [
+								{
+									"key": "org-id",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "rolegroup-id",
+									"value": "{{cloudhub-rolegroup-id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rolegroups role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\"context_params\":{\"org\":\"d7ce40ec-2dd2-45c8-b33c-e3d2118508e0\"},\"role_id\":\"177750b0-9407-4261-92b5-93e772c8ea84\"}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:org-id/rolegroups/:rolegroup-id/roles",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":org-id",
+								"rolegroups",
+								":rolegroup-id",
+								"roles"
+							],
+							"variable": [
+								{
+									"key": "org-id",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "rolegroup-id",
+									"value": "{{cloudhub-rolegroup-id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rolegroups role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\"context_params\":{\"org\":\"d7ce40ec-2dd2-45c8-b33c-e3d2118508e0\"},\"role_id\":\"177750b0-9407-4261-92b5-93e772c8ea84\"}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:org-id/rolegroups/:rolegroup-id/roles",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":org-id",
+								"rolegroups",
+								":rolegroup-id",
+								"roles"
+							],
+							"variable": [
+								{
+									"key": "org-id",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "rolegroup-id",
+									"value": "{{cloudhub-rolegroup-id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RoleGroups",
+			"item": [
+				{
+					"name": "rolegroups",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:org-id/rolegroups",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":org-id",
+								"rolegroups"
+							],
+							"variable": [
+								{
+									"key": "org-id",
+									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rolegroup",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"role_id\": \"6db86c8c-535c-45e4-b7d7-45049c39b69b\",\n  \"name\": \"Zoo Keeper\",\n  \"description\": \"Role for the person in charge of taking care of animals\",\n  \"internal\": true,\n  \"namespaces\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:org-id/rolegroups/:rolegroup-id",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":org-id",
+								"rolegroups",
+								":rolegroup-id"
+							],
+							"variable": [
+								{
+									"key": "org-id",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "rolegroup-id",
+									"value": "{{cloudhub-rolegroup-id}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rolegroup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"API Test\",\n  \"description\": \"API Test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:org-id/rolegroups",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":org-id",
+								"rolegroups"
+							],
+							"variable": [
+								{
+									"key": "org-id",
+									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rolegroup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"API Test\",\n  \"description\": \"API Test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:org-id/rolegroups/:rolegroup-id",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":org-id",
+								"rolegroups",
+								":rolegroup-id"
+							],
+							"variable": [
+								{
+									"key": "org-id",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "rolegroup-id",
+									"value": "4c664e9f-d579-47ba-b82f-59c889e6c5f7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rolegroup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{anypoint_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:org-id/rolegroups/:rolegroup-id",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":org-id",
+								"rolegroups",
+								":rolegroup-id"
+							],
+							"variable": [
+								{
+									"key": "org-id",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "rolegroup-id",
+									"value": "4c664e9f-d579-47ba-b82f-59c889e6c5f7"
+								}
 							]
 						}
 					},
