@@ -28,3 +28,18 @@ Includes
 1. Create Business Group
 2. Get Business Group by ID
 3. Update Business Group
+
+## Roles
+
+1. Get Roles
+2. Get Role Group Roles
+3. Add Role to Role Group
+4. Delete Role from Role Group
+
+## Role Groups
+
+1. Get Role Groups
+2. Get Role Group
+3. Create Role Group
+4. Update Roles Group
+5. Delete Role Group
