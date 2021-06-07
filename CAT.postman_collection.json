@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f92e21a0-60d9-493b-8804-48d1eebbfa03",
+		"_postman_id": "93d17bce-18ac-4f7f-85d5-57e4ca831efd",
 		"name": "CAT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1219,6 +1219,50 @@
 								"accounts",
 								"api",
 								"roles"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Access Controls Viewer",
+									"description": "The name of a role",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": null,
+									"description": "The description of a role",
+									"disabled": true
+								},
+								{
+									"key": "include_internal",
+									"value": "true",
+									"description": "Include internal roles",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": null,
+									"description": "A search string to use for partial matches of role names",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "Pagination parameter to start returning results from this position of matches",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Pagination parameter for how many results to return",
+									"disabled": true
+								},
+								{
+									"key": "ascending",
+									"value": "true",
+									"description": "Sort order for filtering",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -1255,8 +1299,8 @@
 							],
 							"query": [
 								{
-									"disabled": true,
-									"value": null
+									"value": null,
+									"disabled": true
 								}
 							],
 							"variable": [
@@ -1290,7 +1334,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[{\"context_params\":{\"org\":\"d7ce40ec-2dd2-45c8-b33c-e3d2118508e0\"},\"role_id\":\"177750b0-9407-4261-92b5-93e772c8ea84\"}]",
+							"raw": "[\n    {\n        \"context_params\": {\n            \"org\": \"d7ce40ec-2dd2-45c8-b33c-e3d2118508e0\"\n        },\n        \"role_id\": \"177750b0-9407-4261-92b5-93e772c8ea84\"\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1342,7 +1386,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "[{\"context_params\":{\"org\":\"d7ce40ec-2dd2-45c8-b33c-e3d2118508e0\"},\"role_id\":\"177750b0-9407-4261-92b5-93e772c8ea84\"}]",
+							"raw": "[\n    {\n        \"context_params\": {\n            \"org\": \"aa1f55d6-213d-4f60-845c-207286484cd1\"\n        },\n        \"role_group_assignment_id\": \"d4d13720-b479-4af5-8c6c-253daf09152d\",\n        \"role_group_id\": \"00dc3850-1e83-4b3b-918b-86aa646e0daf\",\n        \"role_id\": \"821d84e6-ee22-4646-bf25-5461d49c9690\"\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1490,7 +1534,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"API Test\",\n  \"description\": \"API Test\"\n}",
+							"raw": "{\n  \"name\": \"Test\",\n  \"description\": \"API Test\",\n  \"external_names\": []\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1536,7 +1580,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"API Test\",\n  \"description\": \"API Test\"\n}",
+							"raw": "{\n  \"name\": \"Test\",\n  \"description\": \"API Test\",\n  \"external_names\": [\"What ??\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1563,7 +1607,7 @@
 								},
 								{
 									"key": "rolegroup-id",
-									"value": "4c664e9f-d579-47ba-b82f-59c889e6c5f7"
+									"value": "{{cloudhub-rolegroup-id}}"
 								}
 							]
 						}
@@ -1614,7 +1658,7 @@
 								},
 								{
 									"key": "rolegroup-id",
-									"value": "4c664e9f-d579-47ba-b82f-59c889e6c5f7"
+									"value": "{{cloudhub-rolegroup-id}}"
 								}
 							]
 						}
