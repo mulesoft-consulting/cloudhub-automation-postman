@@ -1702,6 +1702,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"email\": \"christopher.mordue@mulesoft.com\",\n    \"role_groups\": [\n      {\n        \"role_group_id\": \"0b19f6df-ed81-4fd1-b5e7-4921f5e46f4c\",\n        \"name\": \"Organization Administrators\"\n      }\n    ]\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/invites",
 							"host": [
@@ -1729,6 +1738,15 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  520\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/invites",
 							"host": [
@@ -1882,7 +1900,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"maxthemule\",\n  \"firstName\" : \"Max\",\n  \"lastName\" : \"The Mule\",\n  \"email\" : \"maxthemule@example.com\",\n  \"phoneNumber\" : \"111-111-1111\",\n  \"password\": \"u@k7jGDQ$C8n4m\"\n}\n",
+							"raw": "[ \"1c0d1a43-4d91-4b52-bcc6-cff8ecf0c3a3\",\n  \"dc52bf66-b0d8-4cda-9ae8-45a5f085ead4\",\n  \"5314c476-1cd4-49be-ba4e-1d67f6c052c3\" ]",
 							"options": {
 								"raw": {
 									"language": "json"
