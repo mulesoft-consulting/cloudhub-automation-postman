@@ -1666,6 +1666,272 @@
 					"response": []
 				}
 			]
+		},
+        {
+			"name": "Invite",
+			"item": [
+				{
+					"name": "get invites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/invites",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"invites"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post invite",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/invites",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"invites"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete invite",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/invites",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"invites"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/users",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"users"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"maxthemule\",\n  \"firstName\" : \"Max\",\n  \"lastName\" : \"The Mule\",\n  \"email\" : \"maxthemule@example.com\",\n  \"phoneNumber\" : \"111-111-1111\",\n  \"password\": \"u@k7jGDQ$C8n4m\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/users",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"users"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Users",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"maxthemule\",\n  \"firstName\" : \"Max\",\n  \"lastName\" : \"The Mule\",\n  \"email\" : \"maxthemule@example.com\",\n  \"phoneNumber\" : \"111-111-1111\",\n  \"password\": \"u@k7jGDQ$C8n4m\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/users",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"users"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"maxthemule\",\n  \"firstName\" : \"Max\",\n  \"lastName\" : \"The Mule\",\n  \"email\" : \"maxthemule@example.com\",\n  \"phoneNumber\" : \"111-111-1111\",\n  \"password\": \"u@k7jGDQ$C8n4m\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/users",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"users"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		}
 	],
 	"event": [
