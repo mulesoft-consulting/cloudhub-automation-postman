@@ -14,10 +14,14 @@ Includes
 1. Create VPC
 2. Get VPC
 
-## Users
+## Users and Invites
 1. Get Org Members
-2. Send User Invite
-3. Get Roles
+2. Update Org Members
+3. Delete Org Members
+4. Create Org Members
+5. List User Invites
+6. Send User Invite
+7. Delete User Invites
 
 ## Authentication
 1. Delete auth token
