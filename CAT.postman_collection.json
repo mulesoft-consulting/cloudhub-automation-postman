@@ -1800,7 +1800,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/users",
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/users?type=all&offset=0&limit=200",
 							"host": [
 								"{{cloudhub-host}}"
 							],
@@ -1810,6 +1810,23 @@
 								"organizations",
 								":orgId",
 								"users"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "all",
+									"description": "specify the type of the user you want to retrive [all, host, proxy]"
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "The number of records to omit from the response."
+								},
+								{
+									"key": "limit",
+									"value": "200",
+									"description": "Maximum records to retrieve per request. default 25, min 0, max 500"
+								}
 							],
 							"variable": [
 								{
