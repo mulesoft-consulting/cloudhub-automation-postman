@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "93d17bce-18ac-4f7f-85d5-57e4ca831efd",
+		"_postman_id": "07ac1b98-9da0-4540-a8d1-0494dddae181",
 		"name": "CAT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1667,7 +1667,7 @@
 				}
 			]
 		},
-        {
+		{
 			"name": "Invite",
 			"item": [
 				{
@@ -1822,13 +1822,51 @@
 					"response": []
 				},
 				{
+					"name": "get User by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/users/:userId",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "userId",
+									"value": "00f1897d-de38-4da2-bdbc-5a93abdf76d3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "post User",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "XSRF-TOKEN",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"maxthemule\",\n  \"firstName\" : \"Max\",\n  \"lastName\" : \"The Mule\",\n  \"email\" : \"maxthemule@example.com\",\n  \"phoneNumber\" : \"111-111-1111\",\n  \"password\": \"u@k7jGDQ$C8n4m\"\n}\n",
+							"raw": "{\n  \"username\": \"max_the_mule\",\n  \"firstName\" : \"Max\",\n  \"lastName\" : \"The Mule\",\n  \"email\" : \"max_the_mule@example.com\",\n  \"phoneNumber\" : \"111-111-1111\",\n  \"password\": \"u@k7jGDQ$C8n4m\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1861,10 +1899,16 @@
 					"name": "update Users",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "XSRF-TOKEN",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"username\": \"maxthemule\",\n  \"firstName\" : \"Max\",\n  \"lastName\" : \"The Mule\",\n  \"email\" : \"maxthemule@example.com\",\n  \"phoneNumber\" : \"111-111-1111\",\n  \"password\": \"u@k7jGDQ$C8n4m\"\n}\n",
+							"raw": "[\n    {\n        \"username\": \"max_the_mule\",\n        \"firstName\": \"Max\",\n        \"lastName\": \"The Mule\",\n        \"email\": \"maxthemule@example.com\",\n        \"phoneNumber\": \"111-111-1111\",\n        \"password\": \"u@k7jGDQ$C8n4m\"\n    }\n]",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1894,10 +1938,63 @@
 					"response": []
 				},
 				{
-					"name": "delete User",
+					"name": "update Single User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "XSRF-TOKEN",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\" : \"Max\",\n  \"lastName\" : \"The Mule\",\n  \"email\" : \"maxthemule@example.com\",\n  \"phoneNumber\" : \"111-111-1111\",\n  \"password\": \"u@k7jGDQ$C8n4m\",\n  \"enabled\": true,\n  \"properties\" : {\n    \"cs_auth\" :{\n        \"town\": \"here\"\n    }\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/users/:userId",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "userId",
+									"value": "00f1897d-de38-4da2-bdbc-5a93abdf76d3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Users",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "XSRF-TOKEN",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "[ \"1c0d1a43-4d91-4b52-bcc6-cff8ecf0c3a3\",\n  \"dc52bf66-b0d8-4cda-9ae8-45a5f085ead4\",\n  \"5314c476-1cd4-49be-ba4e-1d67f6c052c3\" ]",
@@ -1923,6 +2020,53 @@
 								{
 									"key": "orgId",
 									"value": "{{cloudhub-org}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete Single User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "XSRF-TOKEN",
+								"value": "{{csrftoken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[ \"1c0d1a43-4d91-4b52-bcc6-cff8ecf0c3a3\",\n  \"dc52bf66-b0d8-4cda-9ae8-45a5f085ead4\",\n  \"5314c476-1cd4-49be-ba4e-1d67f6c052c3\" ]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{cloudhub-host}}/accounts/api/organizations/:orgId/users/:userId",
+							"host": [
+								"{{cloudhub-host}}"
+							],
+							"path": [
+								"accounts",
+								"api",
+								"organizations",
+								":orgId",
+								"users",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "orgId",
+									"value": "{{cloudhub-org}}"
+								},
+								{
+									"key": "userId",
+									"value": "00f1897d-de38-4da2-bdbc-5a93abdf76d3"
 								}
 							]
 						}
