@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "538560e7-da4c-4ef5-a4dd-1a9cf8f4bc88",
+		"name": "Exchange Asset Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Publish new asset/version",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "organizationId",
+							"value": "aa1f55d6-213d-4f60-845c-207286484cd1",
+							"type": "text"
+						},
+						{
+							"key": "groupId",
+							"value": "aa1f55d6-213d-4f60-845c-207286484cd1",
+							"type": "text"
+						},
+						{
+							"key": "assetId",
+							"value": "test-asset-abhi2",
+							"type": "text"
+						},
+						{
+							"key": "version",
+							"value": "2.2.3",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test-asset-abhi2",
+							"type": "text"
+						},
+						{
+							"key": "classifier",
+							"value": "raml",
+							"type": "text"
+						},
+						{
+							"key": "apiVersion",
+							"value": "v1",
+							"type": "text"
+						},
+						{
+							"key": "main",
+							"value": "test-api.raml",
+							"type": "text"
+						},
+						{
+							"key": "asset",
+							"type": "file",
+							"src": "/Users/abhiraj.kane/Downloads/test-api-1.0.0-raml.zip"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/zip",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v1/assets",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v1",
+						"assets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all assets public",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v1/assets",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v1",
+						"assets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get specific asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/test-asset-abhi2",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"test-asset-abhi2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-delete-type",
+						"value": "hard-delete",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/test-asset-abhi2/1.0.0",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"test-asset-abhi2",
+						"1.0.0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Asset (edit asset)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test-asset-abhi-postman\",\n    \"description\":\"postman\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/test-asset-abhi2",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"test-asset-abhi2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all assets local",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}

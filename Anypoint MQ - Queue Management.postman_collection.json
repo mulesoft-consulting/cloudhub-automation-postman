@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "20f2f767-9f0b-49cc-88be-a6dde81592bf",
+		"name": "Anypoint MQ - Queue Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add Queue",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"defaultTtl\": 604800000,\n    \"defaultLockTtl\": 120000,\n    \"type\": \"queue\",\n    \"encrypted\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/regions/us-east-1/destinations/queues/test-queue-abhi5",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"mq",
+						"admin",
+						"api",
+						"v1",
+						"organizations",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"environments",
+						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"regions",
+						"us-east-1",
+						"destinations",
+						"queues",
+						"test-queue-abhi5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Queue",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/regions/us-east-1/destinations/queues/test-queue-abhi4",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"mq",
+						"admin",
+						"api",
+						"v1",
+						"organizations",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"environments",
+						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"regions",
+						"us-east-1",
+						"destinations",
+						"queues",
+						"test-queue-abhi4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Queue",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/regions/us-east-1/destinations/queues/test-queue-abhi4",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"mq",
+						"admin",
+						"api",
+						"v1",
+						"organizations",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"environments",
+						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"regions",
+						"us-east-1",
+						"destinations",
+						"queues",
+						"test-queue-abhi4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

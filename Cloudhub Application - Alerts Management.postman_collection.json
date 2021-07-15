@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "20ea887b-09a2-4bdf-a6be-f30e808b93af",
+		"name": "Cloudhub Application - Alerts Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Alert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "aa1f55d6-213d-4f60-845c-207286484cd1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test-alert-abhi2\",\n    \"severity\": \"INFO\",\n    \"actions\": [\n        {\n            \"type\": \"email\",\n            \"content\": \"Hello,\\nYou are receiving this alert because:\\nThe application ${resource} is now in an ${state} state, based on the condition 'CPU ${operator} ${value}%'.\",\n            \"subject\": \"${severity}: CPU usage ${state}\",\n            \"userIds\": [\n                \"fa4bb84b-2b64-4331-b926-0153e48103d8\"\n            ]\n        }\n    ],\n    \"condition\": {\n        \"operator\": \"GREATER_THAN\",\n        \"periodCount\": 10,\n        \"value\": 80,\n        \"resourceType\": \"cloudhub-application\",\n        \"type\": \"cpu\",\n        \"periodMins\": 1,\n        \"resources\": [\n            \"*\"\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts/cloudhub",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts",
+						"cloudhub"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Alert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "{{cloudhub-org}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts/",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get single alert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts/cloudhub/{{cloudhub-rm-alert}}",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts",
+						"cloudhub",
+						"{{cloudhub-rm-alert}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete alert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "{{cloudhub-org}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
