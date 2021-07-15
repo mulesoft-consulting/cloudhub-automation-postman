@@ -33,7 +33,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/apimanager/xapi/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/exchangeAssets?assetId=test-api-patryk-2&groupId=aa1f55d6-213d-4f60-845c-207286484cd1",
+					"raw": "https://anypoint.mulesoft.com/apimanager/xapi/v1/organizations/{{org-id}}/exchangeAssets?assetId=my-test-api&groupId={{org-id}}",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -45,17 +45,17 @@
 						"xapi",
 						"v1",
 						"organizations",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						"exchangeAssets"
 					],
 					"query": [
 						{
 							"key": "assetId",
-							"value": "test-api-patryk-2"
+							"value": "my-test-api"
 						},
 						{
 							"key": "groupId",
-							"value": "aa1f55d6-213d-4f60-845c-207286484cd1"
+							"value": "{{org-id}}"
 						}
 					]
 				}
@@ -82,17 +82,17 @@
 					"formdata": [
 						{
 							"key": "organizationId",
-							"value": "aa1f55d6-213d-4f60-845c-207286484cd1",
+							"value": "{{org-id}}",
 							"type": "text"
 						},
 						{
 							"key": "groupId",
-							"value": "aa1f55d6-213d-4f60-845c-207286484cd1",
+							"value": "{{org-id}}",
 							"type": "text"
 						},
 						{
 							"key": "assetId",
-							"value": "patryk-api",
+							"value": "my-test-api",
 							"type": "text"
 						},
 						{
@@ -102,7 +102,7 @@
 						},
 						{
 							"key": "name",
-							"value": "patryk-test-api",
+							"value": "my-test-api",
 							"type": "text"
 						},
 						{
@@ -117,7 +117,7 @@
 						},
 						{
 							"key": "main",
-							"value": "patryk-test-api.raml",
+							"value": "test-api.raml",
 							"type": "text"
 						},
 						{
@@ -191,7 +191,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets?search=&types=api-group&types=connector&types=custom&types=example&types=extension&types=http-api&types=policy&types=raml-fragment&types=rest-api&types=soap-api&types=template&domain=&organizationId=aa1f55d6-213d-4f60-845c-207286484cd1&masterOrganizationId=&offset=0&limit=20&sharedWithMe=&includeSnapshots=true",
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets?search=&types=api-group&types=connector&types=custom&types=example&types=extension&types=http-api&types=policy&types=raml-fragment&types=rest-api&types=soap-api&types=template&domain=&organizationId={{org-id}}&masterOrganizationId=&offset=0&limit=20&sharedWithMe=&includeSnapshots=true",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -259,7 +259,7 @@
 						},
 						{
 							"key": "organizationId",
-							"value": "aa1f55d6-213d-4f60-845c-207286484cd1"
+							"value": "{{org-id}}"
 						},
 						{
 							"key": "masterOrganizationId",
@@ -308,7 +308,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/:asset_id/:version",
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id/:version",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -320,14 +320,14 @@
 						"api",
 						"v2",
 						"assets",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						":asset_id",
 						":version"
 					],
 					"variable": [
 						{
 							"key": "asset_id",
-							"value": "patryk-test-api"
+							"value": "my-test-api"
 						},
 						{
 							"key": "version",
@@ -360,7 +360,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/:asset_id/",
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id/",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -372,14 +372,14 @@
 						"api",
 						"v2",
 						"assets",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						":asset_id",
 						""
 					],
 					"variable": [
 						{
 							"key": "asset_id",
-							"value": "patryk-api"
+							"value": "my-test-api"
 						}
 					]
 				}
@@ -403,7 +403,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"wow-new-title-patryk\"\n}",
+					"raw": "{\n    \"name\": \"Test Title\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -411,7 +411,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/:asset_id",
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -423,13 +423,13 @@
 						"api",
 						"v2",
 						"assets",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						":asset_id"
 					],
 					"variable": [
 						{
 							"key": "asset_id",
-							"value": "patryk-api"
+							"value": "my-test-api"
 						}
 					]
 				}
@@ -461,7 +461,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/:asset_id",
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -473,13 +473,13 @@
 						"api",
 						"v2",
 						"assets",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						":asset_id"
 					],
 					"variable": [
 						{
 							"key": "asset_id",
-							"value": "patryk-api"
+							"value": "my-test-api"
 						}
 					]
 				}
@@ -511,7 +511,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/:asset_id/:version/tags",
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id/:version/tags",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -523,7 +523,7 @@
 						"api",
 						"v2",
 						"assets",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						":asset_id",
 						":version",
 						"tags"
@@ -531,7 +531,7 @@
 					"variable": [
 						{
 							"key": "asset_id",
-							"value": "patryk-api"
+							"value": "my-test-api"
 						},
 						{
 							"key": "version",
@@ -571,7 +571,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "**Welcome to my API take three**\n\nThis is the body of my api.\n\nHere's some bullets:\n\n- this is amazing\n- this api is the best",
+					"raw": "**Welcome to my API**\n\nThis is the body of my api.\n\nHere's some bullets:\n\n- this is amazing\n- this api is the best",
 					"options": {
 						"raw": {
 							"language": "html"
@@ -579,7 +579,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/patryk-api/1.0.0/portal/draft/pages/home",
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id/:version/portal/draft/pages/home",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -591,13 +591,23 @@
 						"api",
 						"v2",
 						"assets",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
-						"patryk-api",
-						"1.0.0",
+						"{{org-id}}",
+						":asset_id",
+						":version",
 						"portal",
 						"draft",
 						"pages",
 						"home"
+					],
+					"variable": [
+						{
+							"key": "asset_id",
+							"value": "my-test-api"
+						},
+						{
+							"key": "version",
+							"value": "1.0.0"
+						}
 					]
 				}
 			},
@@ -619,7 +629,7 @@
 				"method": "PATCH",
 				"header": [],
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/exchange/api/v1/assets/aa1f55d6-213d-4f60-845c-207286484cd1/patryk-api/1.0.0",
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v1/assets/{{org-id}}/:asset_id/:version",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -631,9 +641,19 @@
 						"api",
 						"v1",
 						"assets",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
-						"patryk-api",
-						"1.0.0"
+						"{{org-id}}",
+						":asset_id",
+						":version"
+					],
+					"variable": [
+						{
+							"key": "asset_id",
+							"value": "my-test-api"
+						},
+						{
+							"key": "version",
+							"value": "1.0.0"
+						}
 					]
 				}
 			},

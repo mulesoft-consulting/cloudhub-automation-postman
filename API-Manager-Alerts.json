@@ -21,7 +21,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/apis/17014332/alerts/:alert_id",
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{org-id}}/environments/{{env-id}}/apis/17014332/alerts/:alert_id",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -33,9 +33,9 @@
 						"api",
 						"v1",
 						"organizations",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						"environments",
-						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"{{env-id}}",
 						"apis",
 						"17014332",
 						"alerts",
@@ -68,7 +68,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"apiAlertsVersion\": \"1.0.0\",\n    \"name\": \"alert-patryk-postman\",\n    \"type\": \"api-response-code\",\n    \"enabled\": true,\n    \"severity\": \"Info\",\n    \"recipients\": [\n        {\n            \"type\": \"user\",\n            \"value\": \"806ef9be-9fb8-4f1f-a9c3-8dcb3dca2a69\",\n            \"firstName\": \"Patryk\",\n            \"lastName\": \"Sobczak\"\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"api-version\",\n        \"aggregate\": \"COUNT\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 2000,\n        \"filter\": [\n            {\n                \"property\": \"responseCode\",\n                \"operator\": \"IN\",\n                \"values\": [\n                    404\n                ]\n            }\n        ]\n    },\n    \"period\": {\n        \"duration\": {\n            \"count\": 5,\n            \"weight\": \"HOURS\"\n        },\n        \"repeat\": 10\n    }\n}",
+					"raw": "{\n    \"apiAlertsVersion\": \"1.0.0\",\n    \"name\": \"test-alert\",\n    \"type\": \"api-response-code\",\n    \"enabled\": true,\n    \"severity\": \"Info\",\n    \"recipients\": [\n        {\n            \"type\": \"user\",\n            \"value\": \"806ef9be-9fb8-4f1f-a9c3-8dcb3dca2a69\",\n            \"firstName\": \"Patryk\",\n            \"lastName\": \"Sobczak\"\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"api-version\",\n        \"aggregate\": \"COUNT\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 2000,\n        \"filter\": [\n            {\n                \"property\": \"responseCode\",\n                \"operator\": \"IN\",\n                \"values\": [\n                    404\n                ]\n            }\n        ]\n    },\n    \"period\": {\n        \"duration\": {\n            \"count\": 5,\n            \"weight\": \"HOURS\"\n        },\n        \"repeat\": 10\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -76,7 +76,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/apis/17014332/alerts",
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{org-id}}/environments/{{env-id}}/apis/17014332/alerts",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -88,9 +88,9 @@
 						"api",
 						"v1",
 						"organizations",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						"environments",
-						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"{{env-id}}",
 						"apis",
 						"17014332",
 						"alerts"
@@ -116,7 +116,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"apiAlertsVersion\": \"1.0.0\",\n    \"name\": \"test-alert-patryk-postman\",\n    \"type\": \"api-response-code\",\n    \"enabled\": true,\n    \"severity\": \"Info\",\n    \"recipients\": [\n        {\n            \"type\": \"user\",\n            \"value\": \"806ef9be-9fb8-4f1f-a9c3-8dcb3dca2a69\",\n            \"firstName\": \"Patryk\",\n            \"lastName\": \"Sobczak\"\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"api-version\",\n        \"aggregate\": \"COUNT\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 2000,\n        \"filter\": [\n            {\n                \"property\": \"responseCode\",\n                \"operator\": \"IN\",\n                \"values\": [\n                    400,\n                    403,\n                    100\n                ]\n            }\n        ]\n    },\n    \"period\": {\n        \"duration\": {\n            \"count\": 5,\n            \"weight\": \"HOURS\"\n        },\n        \"repeat\": 10\n    },\n    \"id\": \"3a267281-fdf3-434f-914f-0b370af6204a\"\n}",
+					"raw": "{\n    \"apiAlertsVersion\": \"1.0.0\",\n    \"name\": \"test-alert\",\n    \"type\": \"api-response-code\",\n    \"enabled\": true,\n    \"severity\": \"Info\",\n    \"recipients\": [\n        {\n            \"type\": \"user\",\n            \"value\": \"806ef9be-9fb8-4f1f-a9c3-8dcb3dca2a69\",\n            \"firstName\": \"Patryk\",\n            \"lastName\": \"Sobczak\"\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"api-version\",\n        \"aggregate\": \"COUNT\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 2000,\n        \"filter\": [\n            {\n                \"property\": \"responseCode\",\n                \"operator\": \"IN\",\n                \"values\": [\n                    400,\n                    403,\n                    100\n                ]\n            }\n        ]\n    },\n    \"period\": {\n        \"duration\": {\n            \"count\": 5,\n            \"weight\": \"HOURS\"\n        },\n        \"repeat\": 10\n    },\n    \"id\": \"3a267281-fdf3-434f-914f-0b370af6204a\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -124,7 +124,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/apis/17014332/alerts/3a267281-fdf3-434f-914f-0b370af6204a",
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{org-id}}/environments/{{env-id}}/apis/17014332/alerts/3a267281-fdf3-434f-914f-0b370af6204a",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -136,9 +136,9 @@
 						"api",
 						"v1",
 						"organizations",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						"environments",
-						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"{{env-id}}",
 						"apis",
 						"17014332",
 						"alerts",
@@ -164,7 +164,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/apis/17014332/alerts",
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{org-id}}/environments/{{env-id}}/apis/17014332/alerts",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -176,9 +176,9 @@
 						"api",
 						"v1",
 						"organizations",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						"environments",
-						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"{{env-id}}",
 						"apis",
 						"17014332",
 						"alerts"
@@ -203,7 +203,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/apis/17014332/alerts/:alert_id",
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{org-id}}/environments/{{env-id}}/apis/17014332/alerts/:alert_id",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -215,9 +215,9 @@
 						"api",
 						"v1",
 						"organizations",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						"environments",
-						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"{{env-id}}",
 						"apis",
 						"17014332",
 						"alerts",

@@ -24,7 +24,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/regions/:location/destinations",
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/{{org-id}}/environments/{{env-id}}/regions/:location/destinations",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -37,9 +37,9 @@
 						"api",
 						"v1",
 						"organizations",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						"environments",
-						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"{{env-id}}",
 						"regions",
 						":location",
 						"destinations"
@@ -79,7 +79,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/regions/:location/destinations/queues/:queue_id",
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/{{org-id}}/environments/{{env-id}}/regions/:location/destinations/queues/:queue_id",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -92,9 +92,9 @@
 						"api",
 						"v1",
 						"organizations",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						"environments",
-						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"{{env-id}}",
 						"regions",
 						":location",
 						"destinations",
@@ -132,7 +132,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/regions/:location/destinations/queues/:queue_id",
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/{{org-id}}/environments/{{env-id}}/regions/:location/destinations/queues/:queue_id",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -145,9 +145,9 @@
 						"api",
 						"v1",
 						"organizations",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						"environments",
-						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"{{env-id}}",
 						"regions",
 						":location",
 						"destinations",
@@ -194,7 +194,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/regions/:location/destinations/queues/:queue_id",
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/{{org-id}}/environments/{{env-id}}/regions/:location/destinations/queues/:queue_id",
 					"protocol": "https",
 					"host": [
 						"anypoint",
@@ -207,9 +207,9 @@
 						"api",
 						"v1",
 						"organizations",
-						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"{{org-id}}",
 						"environments",
-						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"{{env-id}}",
 						"regions",
 						":location",
 						"destinations",
@@ -223,7 +223,7 @@
 						},
 						{
 							"key": "queue_id",
-							"value": "patryk-postman"
+							"value": "patryk-postman2"
 						}
 					]
 				}
