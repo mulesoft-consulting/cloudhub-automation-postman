@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "46c6c766-7441-4abd-93f1-c4c2965041c6",
+		"name": "Alert API Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Alerts from API manager",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"apiAlertsVersion\": \"1.0.0\",\n    \"name\": \"max test alert from postman\",\n    \"type\": \"api-request-count\",\n    \"enabled\": true,\n    \"severity\": \"Info\",\n    \"recipients\": [\n        {\n            \"type\": \"user\",\n            \"value\": \"806ef9be-9fb8-4f1f-a9c3-8dcb3dca2a69\",\n            \"firstName\": \"Patryk\",\n            \"lastName\": \"Sobczak\"\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"api-version\",\n        \"aggregate\": \"COUNT\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 134\n    },\n    \"period\": {\n        \"duration\": {\n            \"count\": 3,\n            \"weight\": \"MINUTES\"\n        },\n        \"repeat\": 4\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{cloudhub-org}}/environments/{{cloudhub-apim-environment}}/apis/{{cloudhub-apim-version}}/alerts",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{cloudhub-org}}",
+						"environments",
+						"{{cloudhub-apim-environment}}",
+						"apis",
+						"{{cloudhub-apim-version}}",
+						"alerts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one alert",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{cloudhub-org}}/environments/{{cloudhub-apim-environment}}/apis/{{cloudhub-apim-version}}/alerts/{{cloudhub-apim-alert}}",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{cloudhub-org}}",
+						"environments",
+						"{{cloudhub-apim-environment}}",
+						"apis",
+						"{{cloudhub-apim-version}}",
+						"alerts",
+						"{{cloudhub-apim-alert}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creat a new alert from API manager",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", () => {",
+							"  pm.expect(pm.response.code).to.eql(201);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"postman.setGlobalVariable('cloudHub_apim_newAlert', responseJson.id",
+							")",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"apiAlertsVersion\": \"1.0.0\",\n    \"name\": \"test-alert-max-from postman {{$randomInt}} \",\n    \"type\": \"api-request-count\",\n    \"enabled\": true,\n    \"severity\": \"Info\",\n    \"recipients\": [\n        {\n            \"type\": \"user\",\n            \"value\": \"fa4bb84b-2b64-4331-b926-0153e48103d8\",\n            \"firstName\": \"Abhiraj\",\n            \"lastName\": \"Kane\"\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"api-version\",\n        \"aggregate\": \"COUNT\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 2\n    },\n    \"period\": {\n        \"duration\": {\n            \"count\": 2,\n            \"weight\": \"HOURS\"\n        },\n        \"repeat\": 2\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{cloudhub-org}}/environments/{{cloudhub-apim-environment}}/apis/{{cloudhub-apim-version}}/alerts",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{cloudhub-org}}",
+						"environments",
+						"{{cloudhub-apim-environment}}",
+						"apis",
+						"{{cloudhub-apim-version}}",
+						"alerts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify one alert from API manger",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"apiAlertsVersion\": \"1.0.0\",\n    \"name\": \"test-alert-max- {{$randomInt}}\",\n    \"type\": \"api-request-count\",\n    \"enabled\": false,\n    \"severity\": \"Info\",\n    \"recipients\": [\n        {\n            \"type\": \"user\",\n            \"value\": \"fa4bb84b-2b64-4331-b926-0153e48103d8\",\n            \"firstName\": \"Abhiraj\",\n            \"lastName\": \"Kane\"\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"api-version\",\n        \"aggregate\": \"COUNT\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 2\n    },\n    \"period\": {\n        \"duration\": {\n            \"count\": 2,\n            \"weight\": \"HOURS\"\n        },\n        \"repeat\": 2\n    },\n    \"id\": \"9339ff66-b229-4a40-979d-043b3b8cef9e\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{cloudhub-org}}/environments/{{cloudhub-apim-environment}}/apis/{{cloudhub-apim-version}}/alerts/{{cloudhub-apim-alert}}",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{cloudhub-org}}",
+						"environments",
+						"{{cloudhub-apim-environment}}",
+						"apis",
+						"{{cloudhub-apim-version}}",
+						"alerts",
+						"{{cloudhub-apim-alert}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an Alert from API manager",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", () => {",
+							"  pm.expect(pm.response.code).to.eql(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{cloudhub-org}}/environments/{{cloudhub-apim-environment}}/apis/{{cloudhub-apim-version}}/alerts/{{cloudHub_apim_newAlert}}",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{cloudhub-org}}",
+						"environments",
+						"{{cloudhub-apim-environment}}",
+						"apis",
+						"{{cloudhub-apim-version}}",
+						"alerts",
+						"{{cloudHub_apim_newAlert}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -47,3 +47,15 @@ Includes
 3. Create Role Group
 4. Update Roles Group
 5. Delete Role Group
+
+## MQ Collection
+Get Colltions/Get/Create/Delete/Modify One Collection of One Organiztion
+
+## API Manger Alert
+Get Alerts/Get/Create/Delete/Modify One Alerts in API Manager
+
+## Runtime Manager Alert 
+Get Alerts/Get/Create/Delete/Modify One Alerts in Run Manager
+
+## Exchange Assets
+Get Assets/Get/Create/Delete/Modify One Asset in One Organization  
