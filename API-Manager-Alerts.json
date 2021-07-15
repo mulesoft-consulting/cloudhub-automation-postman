@@ -1,0 +1,237 @@
+{
+	"info": {
+		"_postman_id": "8114184d-99f1-4c48-86f2-9eef49837c68",
+		"name": "Assignment 2 - Anypoint API Manager Alerts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE an alert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{org-id}}/environments/{{env-id}}/apis/17014332/alerts/:alert_id",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{org-id}}",
+						"environments",
+						"{{env-id}}",
+						"apis",
+						"17014332",
+						"alerts",
+						":alert_id"
+					],
+					"variable": [
+						{
+							"key": "alert_id",
+							"value": "e10b9e6b-0043-4fe8-b425-6830a0337ce6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create alert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"apiAlertsVersion\": \"1.0.0\",\n    \"name\": \"test-alert\",\n    \"type\": \"api-response-code\",\n    \"enabled\": true,\n    \"severity\": \"Info\",\n    \"recipients\": [\n        {\n            \"type\": \"user\",\n            \"value\": \"806ef9be-9fb8-4f1f-a9c3-8dcb3dca2a69\",\n            \"firstName\": \"Patryk\",\n            \"lastName\": \"Sobczak\"\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"api-version\",\n        \"aggregate\": \"COUNT\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 2000,\n        \"filter\": [\n            {\n                \"property\": \"responseCode\",\n                \"operator\": \"IN\",\n                \"values\": [\n                    404\n                ]\n            }\n        ]\n    },\n    \"period\": {\n        \"duration\": {\n            \"count\": 5,\n            \"weight\": \"HOURS\"\n        },\n        \"repeat\": 10\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{org-id}}/environments/{{env-id}}/apis/17014332/alerts",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{org-id}}",
+						"environments",
+						"{{env-id}}",
+						"apis",
+						"17014332",
+						"alerts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify an alert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"apiAlertsVersion\": \"1.0.0\",\n    \"name\": \"test-alert\",\n    \"type\": \"api-response-code\",\n    \"enabled\": true,\n    \"severity\": \"Info\",\n    \"recipients\": [\n        {\n            \"type\": \"user\",\n            \"value\": \"806ef9be-9fb8-4f1f-a9c3-8dcb3dca2a69\",\n            \"firstName\": \"Patryk\",\n            \"lastName\": \"Sobczak\"\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"api-version\",\n        \"aggregate\": \"COUNT\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 2000,\n        \"filter\": [\n            {\n                \"property\": \"responseCode\",\n                \"operator\": \"IN\",\n                \"values\": [\n                    400,\n                    403,\n                    100\n                ]\n            }\n        ]\n    },\n    \"period\": {\n        \"duration\": {\n            \"count\": 5,\n            \"weight\": \"HOURS\"\n        },\n        \"repeat\": 10\n    },\n    \"id\": \"3a267281-fdf3-434f-914f-0b370af6204a\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{org-id}}/environments/{{env-id}}/apis/17014332/alerts/3a267281-fdf3-434f-914f-0b370af6204a",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{org-id}}",
+						"environments",
+						"{{env-id}}",
+						"apis",
+						"17014332",
+						"alerts",
+						"3a267281-fdf3-434f-914f-0b370af6204a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all alerts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{org-id}}/environments/{{env-id}}/apis/17014332/alerts",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{org-id}}",
+						"environments",
+						"{{env-id}}",
+						"apis",
+						"17014332",
+						"alerts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET single alert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{org-id}}/environments/{{env-id}}/apis/17014332/alerts/:alert_id",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{org-id}}",
+						"environments",
+						"{{env-id}}",
+						"apis",
+						"17014332",
+						"alerts",
+						":alert_id"
+					],
+					"variable": [
+						{
+							"key": "alert_id",
+							"value": "bca6d37c-1f04-4108-9686-7a20646274c7"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

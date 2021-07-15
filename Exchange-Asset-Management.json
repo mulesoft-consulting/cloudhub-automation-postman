@@ -1,0 +1,663 @@
+{
+	"info": {
+		"_postman_id": "75640a7f-6173-49fa-94ac-83124cdf7b45",
+		"name": "Assignment 4 - Exchange Asset Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET details of single asset",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "assetId=test-api&groupId=aa1f55d6-213d-4f60-845c-207286484cd1",
+					"options": {
+						"raw": {
+							"language": "html"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/xapi/v1/organizations/{{org-id}}/exchangeAssets?assetId=my-test-api&groupId={{org-id}}",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"xapi",
+						"v1",
+						"organizations",
+						"{{org-id}}",
+						"exchangeAssets"
+					],
+					"query": [
+						{
+							"key": "assetId",
+							"value": "my-test-api"
+						},
+						{
+							"key": "groupId",
+							"value": "{{org-id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create new asset",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "organizationId",
+							"value": "{{org-id}}",
+							"type": "text"
+						},
+						{
+							"key": "groupId",
+							"value": "{{org-id}}",
+							"type": "text"
+						},
+						{
+							"key": "assetId",
+							"value": "my-test-api",
+							"type": "text"
+						},
+						{
+							"key": "version",
+							"value": "1.0.0",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "my-test-api",
+							"type": "text"
+						},
+						{
+							"key": "classifier",
+							"value": "raml",
+							"type": "text"
+						},
+						{
+							"key": "apiVersion",
+							"value": "v1",
+							"type": "text"
+						},
+						{
+							"key": "main",
+							"value": "test-api.raml",
+							"type": "text"
+						},
+						{
+							"key": "asset",
+							"type": "file",
+							"src": "/Users/psobczak/Downloads/patryk-test-api/patryk-test-api.raml"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/zip",
+							"description": "Use this if uploading a zip file containing a RAML file",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "Use this if uploading a RAML file",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "html"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v1/assets",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v1",
+						"assets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list of assets",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [],
+					"options": {
+						"raw": {
+							"language": "html"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets?search=&types=api-group&types=connector&types=custom&types=example&types=extension&types=http-api&types=policy&types=raml-fragment&types=rest-api&types=soap-api&types=template&domain=&organizationId={{org-id}}&masterOrganizationId=&offset=0&limit=20&sharedWithMe=&includeSnapshots=true",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": ""
+						},
+						{
+							"key": "types",
+							"value": "api-group"
+						},
+						{
+							"key": "types",
+							"value": "connector"
+						},
+						{
+							"key": "types",
+							"value": "custom"
+						},
+						{
+							"key": "types",
+							"value": "example"
+						},
+						{
+							"key": "types",
+							"value": "extension"
+						},
+						{
+							"key": "types",
+							"value": "http-api"
+						},
+						{
+							"key": "types",
+							"value": "policy"
+						},
+						{
+							"key": "types",
+							"value": "raml-fragment"
+						},
+						{
+							"key": "types",
+							"value": "rest-api"
+						},
+						{
+							"key": "types",
+							"value": "soap-api"
+						},
+						{
+							"key": "types",
+							"value": "template"
+						},
+						{
+							"key": "domain",
+							"value": ""
+						},
+						{
+							"key": "organizationId",
+							"value": "{{org-id}}"
+						},
+						{
+							"key": "masterOrganizationId",
+							"value": ""
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						},
+						{
+							"key": "sharedWithMe",
+							"value": ""
+						},
+						{
+							"key": "includeSnapshots",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete asset (one version at a time)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Delete-Type",
+						"value": "hard-delete",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id/:version",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"{{org-id}}",
+						":asset_id",
+						":version"
+					],
+					"variable": [
+						{
+							"key": "asset_id",
+							"value": "my-test-api"
+						},
+						{
+							"key": "version",
+							"value": "1.0.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete asset (all versions)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-Delete-Type",
+						"value": "hard-delete",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id/",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"{{org-id}}",
+						":asset_id",
+						""
+					],
+					"variable": [
+						{
+							"key": "asset_id",
+							"value": "my-test-api"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change title",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Test Title\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"{{org-id}}",
+						":asset_id"
+					],
+					"variable": [
+						{
+							"key": "asset_id",
+							"value": "my-test-api"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change description",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"Look at me! I'm a description!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"{{org-id}}",
+						":asset_id"
+					],
+					"variable": [
+						{
+							"key": "asset_id",
+							"value": "my-test-api"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change tags",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"value\": \"Tag 1 text\"\n    },\n    {\n        \"value\": \"Tag 2 is awesome\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id/:version/tags",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"{{org-id}}",
+						":asset_id",
+						":version",
+						"tags"
+					],
+					"variable": [
+						{
+							"key": "asset_id",
+							"value": "my-test-api"
+						},
+						{
+							"key": "version",
+							"value": "1.1.1"
+						}
+					]
+				},
+				"description": "PUT request will replace any existing tags, so you must include preexisting tags when attempting to add additional ones."
+			},
+			"response": []
+		},
+		{
+			"name": "Update description (save draft) [step 1/2]",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "text/markdown",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "**Welcome to my API**\n\nThis is the body of my api.\n\nHere's some bullets:\n\n- this is amazing\n- this api is the best",
+					"options": {
+						"raw": {
+							"language": "html"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/{{org-id}}/:asset_id/:version/portal/draft/pages/home",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"{{org-id}}",
+						":asset_id",
+						":version",
+						"portal",
+						"draft",
+						"pages",
+						"home"
+					],
+					"variable": [
+						{
+							"key": "asset_id",
+							"value": "my-test-api"
+						},
+						{
+							"key": "version",
+							"value": "1.0.0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update description (publish draft) [step 2/2]",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v1/assets/{{org-id}}/:asset_id/:version",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v1",
+						"assets",
+						"{{org-id}}",
+						":asset_id",
+						":version"
+					],
+					"variable": [
+						{
+							"key": "asset_id",
+							"value": "my-test-api"
+						},
+						{
+							"key": "version",
+							"value": "1.0.0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

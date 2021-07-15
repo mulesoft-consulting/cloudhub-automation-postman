@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "b936b6f1-b660-4425-9cf5-5423f8fc4d18",
+		"name": "Assignment 3 - Cloudhub Alerts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Memory usage",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "{{env-id}}",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "{{org-id}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"myAlert\",\n    \"severity\": \"INFO\",\n    \"actions\": [\n        {\n            \"type\": \"email\",\n            \"content\": \"Hello,\\nYou are receiving this alert because:\\nThe application ${resource} is now in an ${state} state, based on the condition 'memory ${operator} ${value}%'.\",\n            \"subject\": \"${severity}: memory usage ${state}\",\n            \"userIds\": [\n                \"806ef9be-9fb8-4f1f-a9c3-8dcb3dca2a69\"\n            ]\n        }\n    ],\n    \"condition\": {\n        \"operator\": \"GREATER_THAN\",\n        \"periodCount\": 25,\n        \"value\": 80,\n        \"resourceType\": \"cloudhub-application\",\n        \"type\": \"memory\",\n        \"periodMins\": 1,\n        \"resources\": [\n            \"dummy-app\"\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts/cloudhub",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts",
+						"cloudhub"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deployment failed",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "{{org-id}}",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "{{env-id}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"myAlert\",\n    \"severity\": \"WARNING\",\n    \"actions\": [\n        {\n            \"type\": \"email\",\n            \"content\": \"Hello,\\nYou are receiving this alert because:\\nThe deployment of the application ${resource} has failed. The error was ${message}.\\nPlease see https://anypoint.mulesoft.com/cloudhub/#/console/applications/${resource} for more details.\",\n            \"subject\": \"${severity}: Deployment Failed\",\n            \"userIds\": [\n                \"806ef9be-9fb8-4f1f-a9c3-8dcb3dca2a69\"\n            ]\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"cloudhub-application\",\n        \"type\": \"deployment-failed\",\n        \"resources\": [\n            \"dummy-app\"\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts/cloudhub",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts",
+						"cloudhub"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET list of all alerts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "{{org-id}}",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "{{env-id}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE an alert",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "{{env-id}}",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "{{org-id}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts/cloudhub/:alert_id",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts",
+						"cloudhub",
+						":alert_id"
+					],
+					"variable": [
+						{
+							"key": "alert_id",
+							"value": "b93ca979-ddae-4dba-a79f-c58c3c5eb669",
+							"description": "ID of alert you want to delete"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
