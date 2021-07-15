@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "1da7f513-31c8-4054-8f43-fb72dadfcafa",
+		"name": "MQ Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get MQs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/{{cloudhub-org}}/environments/{{cloudhub-mq-environment}}/regions/{{cloudhub-mq-region}}/destinations/",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"mq",
+						"admin",
+						"api",
+						"v1",
+						"organizations",
+						"{{cloudhub-org}}",
+						"environments",
+						"{{cloudhub-mq-environment}}",
+						"regions",
+						"{{cloudhub-mq-region}}",
+						"destinations",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a queue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/{{cloudhub-org}}/environments/{{cloudhub-mq-environment}}/regions/{{cloudhub-mq-region}}/destinations/queues/{{cloudhub-mq-queue}}",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"mq",
+						"admin",
+						"api",
+						"v1",
+						"organizations",
+						"{{cloudhub-org}}",
+						"environments",
+						"{{cloudhub-mq-environment}}",
+						"regions",
+						"{{cloudhub-mq-region}}",
+						"destinations",
+						"queues",
+						"{{cloudhub-mq-queue}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new queue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", () => {",
+							"  pm.expect(pm.response.code).to.eql(201);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"",
+							"postman.setGlobalVariable('cloudHub_mq_newqueue', responseJson.queueId",
+							")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"defaultTtl\": 604800000,\n    \"defaultLockTtl\": 120000,\n    \"type\": \"queue\",\n    \"encrypted\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/{{cloudhub-org}}/environments/{{cloudhub-mq-environment}}/regions/{{cloudhub-mq-region}}/destinations/queues/{{cloudhub-mq-newQueue}}{{$randomInt}}",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"mq",
+						"admin",
+						"api",
+						"v1",
+						"organizations",
+						"{{cloudhub-org}}",
+						"environments",
+						"{{cloudhub-mq-environment}}",
+						"regions",
+						"{{cloudhub-mq-region}}",
+						"destinations",
+						"queues",
+						"{{cloudhub-mq-newQueue}}{{$randomInt}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify a queue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"encrypted\": false,\n    \"type\": \"queue\",\n    \"fifo\": false,\n    \"defaultTtl\": 60000,\n    \"defaultLockTtl\": 120000,\n    \"defaultDeliveryDelay\": {{$randomInt}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/{{cloudhub-org}}/environments/{{cloudhub-mq-environment}}/regions/{{cloudhub-mq-region}}/destinations/queues/{{cloudhub-mq-queue}}",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"mq",
+						"admin",
+						"api",
+						"v1",
+						"organizations",
+						"{{cloudhub-org}}",
+						"environments",
+						"{{cloudhub-mq-environment}}",
+						"regions",
+						"{{cloudhub-mq-region}}",
+						"destinations",
+						"queues",
+						"{{cloudhub-mq-queue}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a queue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", () => {",
+							"  pm.expect(pm.response.code).to.eql(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/mq/admin/api/v1/organizations/{{cloudhub-org}}/environments/{{cloudhub-mq-environment}}/regions/{{cloudhub-mq-region}}/destinations/queues/{{cloudHub_mq_newqueue}}",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"mq",
+						"admin",
+						"api",
+						"v1",
+						"organizations",
+						"{{cloudhub-org}}",
+						"environments",
+						"{{cloudhub-mq-environment}}",
+						"regions",
+						"{{cloudhub-mq-region}}",
+						"destinations",
+						"queues",
+						"{{cloudHub_mq_newqueue}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
