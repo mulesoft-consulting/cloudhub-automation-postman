@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "b589aff8-9abf-44d7-8d2d-3940d528dae4",
+		"name": "Cloudhub Alerts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE ALERTS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "aa1f55d6-213d-4f60-845c-207286484cd1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test-alert-rumana-postman1\",\n    \"severity\": \"CRITICAL\",\n    \"actions\": [\n        {\n            \"type\": \"email\",\n            \"content\": \"Hello,\\nYou are receiving this alert because:\\nThe application ${resource} is now in an ${state} state, based on the condition 'memory ${operator} ${value}%'.\",\n            \"subject\": \"${severity}: memory usage ${state}\",\n            \"userIds\": [\n                \"a9ba2250-f418-4d98-8235-bc95618547d7\"\n            ]\n        }\n    ],\n    \"condition\": {\n        \"operator\": \"GREATER_THAN\",\n        \"periodCount\": 10,\n        \"value\": 80,\n        \"resourceType\": \"cloudhub-application\",\n        \"type\": \"memory\",\n        \"periodMins\": 1,\n        \"resources\": [\n            \"dummy-app\"\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts/cloudhub",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts",
+						"cloudhub"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALERTS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "{{env_id}}",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "{{org_id}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts/",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SINGLE ALERT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "{{org_id}}",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "{{env_id}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts/cloudhub/75625d4d-c541-46d5-ab54-a969b8868de6",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts",
+						"cloudhub",
+						"75625d4d-c541-46d5-ab54-a969b8868de6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ALERT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/armui/api/v1/alerts/cloudhub/749ff2e7-3f69-4325-98c8-987275ac0d96\n",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"armui",
+						"api",
+						"v1",
+						"alerts",
+						"cloudhub",
+						"749ff2e7-3f69-4325-98c8-987275ac0d96\n"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

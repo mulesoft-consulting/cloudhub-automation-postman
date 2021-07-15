@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "c97b6e7c-08c3-45f8-a58c-4985dc23be01",
+		"name": "Asset Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET  SPECIFIC ASSET",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/test-api",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"test-api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE ASSET",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "organizationId",
+							"value": "aa1f55d6-213d-4f60-845c-207286484cd1",
+							"type": "text"
+						},
+						{
+							"key": "groupId",
+							"value": "aa1f55d6-213d-4f60-845c-207286484cd1",
+							"type": "text"
+						},
+						{
+							"key": "assetId",
+							"value": "test-asset-ruma-3",
+							"type": "text"
+						},
+						{
+							"key": "version",
+							"value": "1.4.1",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test-asset-ruma-3",
+							"type": "text"
+						},
+						{
+							"key": "classifier",
+							"value": "raml",
+							"type": "text"
+						},
+						{
+							"key": "apiVersion",
+							"value": "v1",
+							"type": "text"
+						},
+						{
+							"key": "main",
+							"value": "test-api.raml",
+							"type": "text"
+						},
+						{
+							"key": "asset",
+							"type": "file",
+							"src": "/Users/rjavali/Downloads/test-api-1.0.0-raml/test-api.raml"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v1/assets",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v1",
+						"assets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL ASSETS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets?search=&types=api-group&types=connector&types=custom&types=example&types=extension&types=http-api&types=policy&types=raml-fragment&types=rest-api&types=soap-api&types=template&domain=&&masterOrganizationId=aa1f55d6-213d-4f60-845c-207286484cd1&offset=0&limit=20&sharedWithMe=&includeSnapshots=true",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": ""
+						},
+						{
+							"key": "types",
+							"value": "api-group"
+						},
+						{
+							"key": "types",
+							"value": "connector"
+						},
+						{
+							"key": "types",
+							"value": "custom"
+						},
+						{
+							"key": "types",
+							"value": "example"
+						},
+						{
+							"key": "types",
+							"value": "extension"
+						},
+						{
+							"key": "types",
+							"value": "http-api"
+						},
+						{
+							"key": "types",
+							"value": "policy"
+						},
+						{
+							"key": "types",
+							"value": "raml-fragment"
+						},
+						{
+							"key": "types",
+							"value": "rest-api"
+						},
+						{
+							"key": "types",
+							"value": "soap-api"
+						},
+						{
+							"key": "types",
+							"value": "template"
+						},
+						{
+							"key": "domain",
+							"value": ""
+						},
+						{
+							"key": null,
+							"value": null
+						},
+						{
+							"key": "masterOrganizationId",
+							"value": "aa1f55d6-213d-4f60-845c-207286484cd1"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						},
+						{
+							"key": "sharedWithMe",
+							"value": ""
+						},
+						{
+							"key": "includeSnapshots",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ASSET",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-delete-type",
+						"value": "hard-delete",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/test-asset-ruma-3/1.4.1",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"test-asset-ruma-3",
+						"1.4.1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE ASSET",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"new test update\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/aa1f55d6-213d-4f60-845c-207286484cd1/test-asset-ruma",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"test-asset-ruma"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ALL ASSETS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

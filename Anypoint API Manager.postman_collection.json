@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "273971ea-fe22-4e5d-90d7-e1b30bf01236",
+		"name": "Anypoint API Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE ALERT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1ca5c6f9-0ab6-4d95-9602-3e6e8a49a637",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"apiAlertsVersion\": \"1.0.0\",\n    \"name\": \"test-alert-ruma-postman3\",\n    \"type\": \"api-response-code\",\n    \"enabled\": true,\n    \"severity\": \"Info\",\n    \"recipients\": [\n        {\n            \"type\": \"user\",\n            \"value\": \"a9ba2250-f418-4d98-8235-bc95618547d7\",\n            \"firstName\": \"Rumana\",\n            \"lastName\": \"Javali\"\n        }\n    ],\n    \"condition\": {\n        \"resourceType\": \"api-version\",\n        \"aggregate\": \"COUNT\",\n        \"operator\": \"GREATER_THAN\",\n        \"value\": 15,\n        \"filter\": [\n            {\n                \"property\": \"responseCode\",\n                \"operator\": \"IN\",\n                \"values\": [\n                    404\n                ]\n            }\n        ]\n    },\n    \"period\": {\n        \"duration\": {\n            \"count\": 6,\n            \"weight\": \"HOURS\"\n        },\n        \"repeat\": 100\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/apis/17014332/alerts",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"environments",
+						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"apis",
+						"17014332",
+						"alerts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALERTS",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{anypoint_access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/apis/17014332/alerts/",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"environments",
+						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"apis",
+						"17014332",
+						"alerts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ALERTS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1ca5c6f9-0ab6-4d95-9602-3e6e8a49a637",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/aa1f55d6-213d-4f60-845c-207286484cd1/environments/7074fcdd-9b23-4ab3-97c8-5db5f4adf17d/apis/17014332/alerts/58518d51-5bfb-45f7-a99c-15398270db6f",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"aa1f55d6-213d-4f60-845c-207286484cd1",
+						"environments",
+						"7074fcdd-9b23-4ab3-97c8-5db5f4adf17d",
+						"apis",
+						"17014332",
+						"alerts",
+						"58518d51-5bfb-45f7-a99c-15398270db6f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://anypoint.mulesoft.com/mocking/api/v1/links/afa24f82-1d18-4466-8f54-4b722b63595d/baskets/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ContactID\": 1001,\n    \"Items\": [\n        {\n            \"Category\": \"Apple\",\n            \"Name\": \"AirPods Pro\",\n            \"Prise\": 189.36,\n            \"Character\": \"brand new\",\n            \"Amount\": 1000,\n            \"ProductID\": 1233800321\n        }\n    ],\n    \"TotalAmount\": 1500.89\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/mocking/api/v1/links/afa24f82-1d18-4466-8f54-4b722b63595d/baskets/1",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"mocking",
+						"api",
+						"v1",
+						"links",
+						"afa24f82-1d18-4466-8f54-4b722b63595d",
+						"baskets",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{anypoint_access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
